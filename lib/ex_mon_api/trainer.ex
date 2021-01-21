@@ -12,12 +12,19 @@ defmodule ExMonApi.Trainer do
     timestamps()
   end
 
-  @required_params [:name, :password_hash]
+  @required_params [:name, :password]
+
+  def build(params) do
+    params
+    |> changeset()
+    |> apply_action(:insert)
+  end
+
   def changeset(params) do
     %__MODULE__{}
     |> cast(params, @required_params)
     |> validate_required(@required_params)
-    |> validate_length(:password_hash, min: 6)
+    |> validate_length(:password, min: 6)
     |> put_pass_hash()
   end
 
