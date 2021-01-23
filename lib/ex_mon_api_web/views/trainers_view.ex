@@ -5,7 +5,7 @@ defmodule ExMonApiWeb.TrainersView do
 
   def render("create.json", %{trainer: %Trainer{id: id, name: name, inserted_at: inserted_at}}) do
     %{
-      message: "BOSTA TRAINER CREATED",
+      message: "TRAINER CREATED",
       trainer: %{
         id: id,
         name: name,
@@ -19,6 +19,18 @@ defmodule ExMonApiWeb.TrainersView do
       id: id,
       name: name,
       inserted_at: inserted_at
+    }
+  end
+
+  def render("update.json", %{trainer: %Trainer{id: id, name: name, inserted_at: inserted_at, updated_at: updated_at}}) do
+    %{
+      message: "TRAINER UPTDATED",
+      trainer: %{
+        id: id,
+        name: name,
+        inserted_at: inserted_at,
+        updated_at: updated_at
+      }
     }
   end
 end
